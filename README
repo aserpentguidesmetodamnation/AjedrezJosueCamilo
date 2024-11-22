@@ -1,0 +1,24 @@
+# Proyecto de Ajedrez en Java
+
+Este proyecto implementa un juego de ajedrez en Java con una interfaz gráfica utilizando Swing. El objetivo es permitir jugar una partica clásica, y también registrar los movimientos de la partida.
+
+## Descripción
+
+El proyecto incluye varias funcionalidades clave:
+
+- **Tablero de Ajedrez**: Un tablero interactivo donde se pueden mover las piezas.
+- **Movimientos en PGN**: Guardado y display en consola de los movimientos en formato PGN, incluyendo detalles como el jaque, jaque mate y las piezas capturadas.
+- **Metadatos de la partida**: El proyecto permite ingresar y guardar metadatos de la partida como el evento, la fecha, los jugadores, etc.
+- **Interfaz gráfica**: Una interfaz de usuario gráfica donde los jugadores pueden interactuar con el tablero y las piezas.
+
+## Características
+
+- **Tablero**: Tablero de ajedrez estándar de 8x8 con imágenes para las piezas.
+- **Metadatos**: Permite ingresar detalles de la partida como evento, sitio, fecha, jugadores y resultado.
+- **PGN**: Registro de movimientos en formato PGN con soporte para castling, jaque y jaque mate.
+- **Interacción**: Interfaz gráfica donde los jugadores pueden mover las piezas.
+
+## Requisitos
+
+- **JDK 22 o superior**: El proyecto está desarrollado usando Java 22.
+- **IDE recomendada**: IntelliJ IDEA o cualquier IDE compatible con Java.

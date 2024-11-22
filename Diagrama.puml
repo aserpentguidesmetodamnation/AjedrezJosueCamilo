@@ -1,0 +1,99 @@
+@startuml
+
+' Definir las clases
+class Metadatos {
+    - String event
+    - String site
+    - String date
+    - String round
+    - String whitePlayer
+    - String blackPlayer
+    - String result
+    + Metadatos(String, String, String, String, String, String, String)
+    + getEvent(): String
+    + setEvent(String): void
+    + getSite(): String
+    + setSite(String): void
+    + getDate(): String
+    + setDate(String): void
+    + getRound(): String
+    + setRound(String): void
+    + getWhitePlayer(): String
+    + setWhitePlayer(String): void
+    + getBlackPlayer(): String
+    + setBlackPlayer(String): void
+    + getResult(): String
+    + setResult(String): void
+    + toString(): String
+}
+
+class Movimiento {
+    - Pieza pieza
+    - int oldRow
+    - int oldCol
+    - int newRow
+    - int newCol
+    - Pieza capture
+    + Movimiento(Pieza, int, int, int, int)
+    + getPieza(): Pieza
+    + setPieza(Pieza): void
+    + getOldRow(): int
+    + getOldCol(): int
+    + getNewRow(): int
+    + getNewCol(): int
+    + getCapture(): Pieza
+    + setCapture(Pieza): void
+}
+
+class Pieza {
+    - String name
+    - boolean isWhite
+    + Pieza(String, boolean)
+    + getName(): String
+    + isWhite(): boolean
+}
+
+class GuardaMovimientos {
+    - Tablero tablero
+    - List<String> moves
+    - int moveCounter
+    + GuardaMovimientos(Tablero)
+    + recordMove(Movimiento): void
+    + convertToPGN(Movimiento): String
+    + isKingsideCastling(Movimiento): boolean
+    + isQueensideCastling(Movimiento): boolean
+    + getPGN(): String
+    + displayMoves(): void
+}
+
+class Tablero {
+    - Pieza[][] piezas
+    - Jaque jaque
+    + Tablero()
+    + findKing(boolean): Pieza
+    + isValidMove(Movimiento): boolean
+}
+
+class PGN {
+    - Metadatos metadata
+    - GuardaMovimientos guardaMovimientos
+    + PGN(Metadatos, GuardaMovimientos)
+    + writeToFile(String): void
+}
+
+class Jaque {
+    + isKingChecked(Movimiento): boolean
+    + isGameOver(Pieza): boolean
+}
+
+' Relaciones entre clases
+Metadatos -- PGN : "Contiene"
+GuardaMovimientos -- PGN : "Contiene"
+GuardaMovimientos -- Movimiento : "Registra"
+Tablero -- GuardaMovimientos : "Usa"
+Tablero -- Pieza : "Contiene"
+Tablero -- Jaque : "Usa"
+Movimiento -- Pieza : "Involucra"
+GuardaMovimientos -- Tablero : "Usa"
+
+@enduml
